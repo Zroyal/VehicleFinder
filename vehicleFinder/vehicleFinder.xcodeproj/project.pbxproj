@@ -19,6 +19,12 @@
 		3DF223802810A789009418FF /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2237F2810A789009418FF /* Networker.swift */; };
 		3DF223822810A7DB009418FF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223812810A7DB009418FF /* Utils.swift */; };
 		3DF223842810A827009418FF /* StringConstatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223832810A827009418FF /* StringConstatns.swift */; };
+		3DF223882810AA3C009418FF /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223872810AA3C009418FF /* APIEndpoints.swift */; };
+		3DF2238A2810ABBB009418FF /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223892810ABBB009418FF /* APIConstants.swift */; };
+		3DF2238C2810ACC6009418FF /* DefaultScooterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2238B2810ACC6009418FF /* DefaultScooterRepository.swift */; };
+		3DF2238F2810AD0F009418FF /* ScooterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2238E2810AD0F009418FF /* ScooterRepository.swift */; };
+		3DF223912810AD54009418FF /* VehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223902810AD54009418FF /* VehicleModel.swift */; };
+		3DF223942810B14E009418FF /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223932810B14E009418FF /* ResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +61,12 @@
 		3DF2237F2810A789009418FF /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		3DF223812810A7DB009418FF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3DF223832810A827009418FF /* StringConstatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstatns.swift; sourceTree = "<group>"; };
+		3DF223872810AA3C009418FF /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		3DF223892810ABBB009418FF /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		3DF2238B2810ACC6009418FF /* DefaultScooterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultScooterRepository.swift; sourceTree = "<group>"; };
+		3DF2238E2810AD0F009418FF /* ScooterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterRepository.swift; sourceTree = "<group>"; };
+		3DF223902810AD54009418FF /* VehicleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleModel.swift; sourceTree = "<group>"; };
+		3DF223932810B14E009418FF /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +150,8 @@
 		3DF223762810A681009418FF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3DF223852810AA12009418FF /* Repository */,
+				3DF223862810AA24009418FF /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -145,6 +159,8 @@
 		3DF223772810A687009418FF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3DF223922810AD5A009418FF /* Entities */,
+				3DF2238D2810ACFE009418FF /* Interfaces */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -178,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF223832810A827009418FF /* StringConstatns.swift */,
+				3DF223892810ABBB009418FF /* APIConstants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -190,6 +207,39 @@
 				3DF223512810A267009418FF /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3DF223852810AA12009418FF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				3DF2238B2810ACC6009418FF /* DefaultScooterRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		3DF223862810AA24009418FF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3DF223872810AA3C009418FF /* APIEndpoints.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3DF2238D2810ACFE009418FF /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				3DF2238E2810AD0F009418FF /* ScooterRepository.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		3DF223922810AD5A009418FF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3DF223902810AD54009418FF /* VehicleModel.swift */,
+				3DF223932810B14E009418FF /* ResponseModel.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,10 +374,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF223822810A7DB009418FF /* Utils.swift in Sources */,
+				3DF223882810AA3C009418FF /* APIEndpoints.swift in Sources */,
 				3DF2234B2810A265009418FF /* ViewController.swift in Sources */,
 				3DF223472810A265009418FF /* AppDelegate.swift in Sources */,
+				3DF2238A2810ABBB009418FF /* APIConstants.swift in Sources */,
+				3DF2238C2810ACC6009418FF /* DefaultScooterRepository.swift in Sources */,
 				3DF2237E2810A76C009418FF /* APIError.swift in Sources */,
+				3DF2238F2810AD0F009418FF /* ScooterRepository.swift in Sources */,
+				3DF223912810AD54009418FF /* VehicleModel.swift in Sources */,
 				3DF223842810A827009418FF /* StringConstatns.swift in Sources */,
+				3DF223942810B14E009418FF /* ResponseModel.swift in Sources */,
 				3DF223802810A789009418FF /* Networker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
