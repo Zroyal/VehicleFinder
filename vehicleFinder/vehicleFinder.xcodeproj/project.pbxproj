@@ -25,6 +25,7 @@
 		3DF2238F2810AD0F009418FF /* ScooterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2238E2810AD0F009418FF /* ScooterRepository.swift */; };
 		3DF223912810AD54009418FF /* VehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223902810AD54009418FF /* VehicleModel.swift */; };
 		3DF223942810B14E009418FF /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223932810B14E009418FF /* ResponseModel.swift */; };
+		3DF223972810B2A5009418FF /* FetchScooterListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223962810B2A5009418FF /* FetchScooterListUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		3DF2238E2810AD0F009418FF /* ScooterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterRepository.swift; sourceTree = "<group>"; };
 		3DF223902810AD54009418FF /* VehicleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleModel.swift; sourceTree = "<group>"; };
 		3DF223932810B14E009418FF /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		3DF223962810B2A5009418FF /* FetchScooterListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchScooterListUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 		3DF223772810A687009418FF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3DF223952810B287009418FF /* UseCases */,
 				3DF223922810AD5A009418FF /* Entities */,
 				3DF2238D2810ACFE009418FF /* Interfaces */,
 			);
@@ -240,6 +243,14 @@
 				3DF223932810B14E009418FF /* ResponseModel.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		3DF223952810B287009418FF /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				3DF223962810B2A5009418FF /* FetchScooterListUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +396,7 @@
 				3DF223842810A827009418FF /* StringConstatns.swift in Sources */,
 				3DF223942810B14E009418FF /* ResponseModel.swift in Sources */,
 				3DF223802810A789009418FF /* Networker.swift in Sources */,
+				3DF223972810B2A5009418FF /* FetchScooterListUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
