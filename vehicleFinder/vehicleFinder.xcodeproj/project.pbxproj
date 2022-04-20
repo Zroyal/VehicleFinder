@@ -28,6 +28,7 @@
 		3DF2239B2810BF23009418FF /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2239A2810BF23009418FF /* MapViewModel.swift */; };
 		3DF2239D2810C204009418FF /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2239C2810C204009418FF /* AppFactory.swift */; };
 		3DF223A02810C463009418FF /* ApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2239F2810C463009418FF /* ApplicationExtension.swift */; };
+		3DF223A22810C6B7009418FF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A12810C6B7009418FF /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		3DF2239A2810BF23009418FF /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		3DF2239C2810C204009418FF /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		3DF2239F2810C463009418FF /* ApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationExtension.swift; sourceTree = "<group>"; };
+		3DF223A12810C6B7009418FF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF2234A2810A265009418FF /* MapVC.swift */,
+				3DF223A12810C6B7009418FF /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				3DF223882810AA3C009418FF /* APIEndpoints.swift in Sources */,
 				3DF2234B2810A265009418FF /* MapVC.swift in Sources */,
 				3DF223472810A265009418FF /* AppDelegate.swift in Sources */,
+				3DF223A22810C6B7009418FF /* LoadingView.swift in Sources */,
 				3DF2238A2810ABBB009418FF /* APIConstants.swift in Sources */,
 				3DF2238C2810ACC6009418FF /* DefaultScooterRepository.swift in Sources */,
 				3DF223A02810C463009418FF /* ApplicationExtension.swift in Sources */,

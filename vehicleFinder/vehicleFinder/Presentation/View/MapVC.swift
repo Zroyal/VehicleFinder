@@ -16,6 +16,7 @@ class MapVC: UIViewController {
 
     lazy private var mapView = MKMapView(frame: .zero)
     lazy private var closestButton = UIButton(frame: .zero)
+    lazy private var loadingView = LoadingView(frame: .zero)
 
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
@@ -35,11 +36,13 @@ class MapVC: UIViewController {
     private func configView() {
         view.backgroundColor = .white
         
-        self.view.addSubview(mapView)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
+        let subviews = [mapView, closestButton, loadingView]
+        
+        subviews.forEach {
+            self.view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
 
-        self.view.addSubview(closestButton)
-        closestButton.translatesAutoresizingMaskIntoConstraints = false
 
         setUpConstraints()
         
@@ -86,9 +89,21 @@ class MapVC: UIViewController {
                 equalTo: self.view.trailingAnchor,
                 constant: 0),
             
+            loadingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loadingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            loadingView.heightAnchor.constraint(equalToConstant: 150),
+            loadingView.widthAnchor.constraint(equalToConstant: 150)
+            
         ])
     }
+        
+    private func showLoading() {
+        loadingView.showLoading()
+    }
     
+    private func hideLoading() {
+        loadingView.hideLoading()
+    }
 
 }
 
