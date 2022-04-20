@@ -97,12 +97,15 @@
 		3DF223452810A265009418FF /* vehicleFinder */ = {
 			isa = PBXGroup;
 			children = (
-				3DF223462810A265009418FF /* AppDelegate.swift */,
+				3DF223792810A698009418FF /* Application */,
+				3DF223782810A68E009418FF /* Presentation */,
+				3DF223772810A687009418FF /* Domain */,
+				3DF223762810A681009418FF /* Data */,
+				3DF2237B2810A6B4009418FF /* Common */,
+				3DF2237A2810A6A2009418FF /* Infrastructure */,
 				3DF2234A2810A265009418FF /* ViewController.swift */,
 				3DF2234C2810A265009418FF /* Main.storyboard */,
-				3DF2234F2810A267009418FF /* Assets.xcassets */,
-				3DF223512810A267009418FF /* LaunchScreen.storyboard */,
-				3DF223542810A267009418FF /* Info.plist */,
+				3DF2237C2810A6E1009418FF /* Resources */,
 			);
 			path = vehicleFinder;
 			sourceTree = "<group>";
@@ -122,6 +125,59 @@
 				3DF223692810A267009418FF /* vehicleFinderUITestsLaunchTests.swift */,
 			);
 			path = vehicleFinderUITests;
+			sourceTree = "<group>";
+		};
+		3DF223762810A681009418FF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3DF223772810A687009418FF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3DF223782810A68E009418FF /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3DF223792810A698009418FF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3DF223462810A265009418FF /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3DF2237A2810A6A2009418FF /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		3DF2237B2810A6B4009418FF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3DF2237C2810A6E1009418FF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3DF223542810A267009418FF /* Info.plist */,
+				3DF2234F2810A267009418FF /* Assets.xcassets */,
+				3DF223512810A267009418FF /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,7 +491,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P3JL46M594;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = vehicleFinder/Info.plist;
+				INFOPLIST_FILE = vehicleFinder/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -463,7 +519,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P3JL46M594;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = vehicleFinder/Info.plist;
+				INFOPLIST_FILE = vehicleFinder/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
