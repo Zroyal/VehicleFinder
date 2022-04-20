@@ -13,4 +13,5 @@ struct StringConstatns {
     static let okay = "OK"
     static let createUrlError = "Couldn't create URL"
     static let retry = "Retry"
+    static let showClosestVehicle = "Show Closest Vehicle"
 }
