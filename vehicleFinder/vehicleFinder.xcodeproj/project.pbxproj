@@ -11,7 +11,6 @@
 		3DF2234B2810A265009418FF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2234A2810A265009418FF /* MapVC.swift */; };
 		3DF223502810A267009418FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF2234F2810A267009418FF /* Assets.xcassets */; };
 		3DF223532810A267009418FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF223512810A267009418FF /* LaunchScreen.storyboard */; };
-		3DF2235E2810A267009418FF /* vehicleFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2235D2810A267009418FF /* vehicleFinderTests.swift */; };
 		3DF223682810A267009418FF /* vehicleFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223672810A267009418FF /* vehicleFinderUITests.swift */; };
 		3DF2236A2810A267009418FF /* vehicleFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223692810A267009418FF /* vehicleFinderUITestsLaunchTests.swift */; };
 		3DF2237E2810A76C009418FF /* GeneralError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2237D2810A76C009418FF /* GeneralError.swift */; };
@@ -33,6 +32,8 @@
 		3DF223A728116976009418FF /* MapKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A628116976009418FF /* MapKitExtension.swift */; };
 		3DF223A928116B8C009418FF /* VehicleAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */; };
 		3DF223AD28131F25009418FF /* LocationManagerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223AC28131F25009418FF /* LocationManagerUseCase.swift */; };
+		3DF223B028133CA8009418FF /* RepositoriesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223AF28133CA8009418FF /* RepositoriesTest.swift */; };
+		3DF223B228133CD7009418FF /* TestMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223B128133CD7009418FF /* TestMockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,6 @@
 		3DF223522810A267009418FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DF223542810A267009418FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF223592810A267009418FF /* vehicleFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vehicleFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DF2235D2810A267009418FF /* vehicleFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleFinderTests.swift; sourceTree = "<group>"; };
 		3DF223632810A267009418FF /* vehicleFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vehicleFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF223672810A267009418FF /* vehicleFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleFinderUITests.swift; sourceTree = "<group>"; };
 		3DF223692810A267009418FF /* vehicleFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -83,6 +83,8 @@
 		3DF223A628116976009418FF /* MapKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtension.swift; sourceTree = "<group>"; };
 		3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAttributesModel.swift; sourceTree = "<group>"; };
 		3DF223AC28131F25009418FF /* LocationManagerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerUseCase.swift; sourceTree = "<group>"; };
+		3DF223AF28133CA8009418FF /* RepositoriesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTest.swift; sourceTree = "<group>"; };
+		3DF223B128133CD7009418FF /* TestMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +149,8 @@
 		3DF2235C2810A267009418FF /* vehicleFinderTests */ = {
 			isa = PBXGroup;
 			children = (
-				3DF2235D2810A267009418FF /* vehicleFinderTests.swift */,
+				3DF223AF28133CA8009418FF /* RepositoriesTest.swift */,
+				3DF223B128133CD7009418FF /* TestMockData.swift */,
 			);
 			path = vehicleFinderTests;
 			sourceTree = "<group>";
@@ -456,7 +459,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DF2235E2810A267009418FF /* vehicleFinderTests.swift in Sources */,
+				3DF223B228133CD7009418FF /* TestMockData.swift in Sources */,
+				3DF223B028133CA8009418FF /* RepositoriesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

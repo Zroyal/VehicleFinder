@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ResponseModel: Codable {
+struct ResponseModel: Codable {
     var data: [VehicleModel]?
     
     enum CodingKeys: String, CodingKey {

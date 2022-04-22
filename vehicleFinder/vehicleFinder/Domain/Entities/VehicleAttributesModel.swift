@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VehicleAttributesModel: Codable {
+struct VehicleAttributesModel: Codable, Equatable {
     var vehicleType: String?
     var latitude: Double?
     var longitude: Double?

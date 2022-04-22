@@ -24,7 +24,6 @@ class DefaultScooterRepository: ScooterRepository {
         publisher.sink { completion in
             
         } receiveValue: { value in
-            
         }.store(in: &cancellables)
 
         return publisher

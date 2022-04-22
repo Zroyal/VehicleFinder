@@ -174,7 +174,7 @@ class MapVC: UIViewController {
             
         } else {
             isWaitingForClosest = true
-            loadingView.setLoadingMessage("Finding closest vehicle")
+            loadingView.setLoadingMessage(StringConstatns.FindingClosestVehicle)
             loadingView.showLoading()
             viewModel.showClosestVehicle()
         }

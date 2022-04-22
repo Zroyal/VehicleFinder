@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VehicleModel: Codable {
+struct VehicleModel: Codable, Equatable {
     var type: String?
     var vehicleId: String?
     var attributes: VehicleAttributesModel?
@@ -18,5 +18,10 @@ class VehicleModel: Codable {
         case attributes
     }
     
+    static func == (lhs: VehicleModel, rhs: VehicleModel) -> Bool {
+        (lhs.type == rhs.type &&
+        lhs.vehicleId == rhs.vehicleId &&
+        lhs.attributes == rhs.attributes)
+    }
 }
 
