@@ -138,6 +138,7 @@ class MapVC: UIViewController {
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
                 if self?.isWaitingForClosest ?? false {
+                    self?.isWaitingForClosest = false
                     self?.loadingView.hideLoading()
                     self?.showAnnotationInfo(
                         annotation: self?.viewModel.closestVehicle,
@@ -150,6 +151,7 @@ class MapVC: UIViewController {
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
                 if self?.isWaitingForClosest ?? false {
+                    self?.isWaitingForClosest = false
                     self?.loadingView.hideLoading()
                     self?.showError(error: self?.viewModel.closestVehicleFindingError)
                 }
@@ -161,7 +163,7 @@ class MapVC: UIViewController {
     
     // MARK: - Actions
     @objc func showClosestVehicleInformation() {
-        if viewModel.annotations.count == 0 {
+        if viewModel.annotations.count == 0 || isWaitingForClosest {
             return
         }
         

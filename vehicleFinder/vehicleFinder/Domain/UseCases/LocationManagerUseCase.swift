@@ -9,15 +9,17 @@ import Foundation
 import MapKit
 import Combine
 
+typealias LocationResult = (Result<VehicleAnnotation, GeneralError>) -> Void
+
 protocol LocationManagerUseCase {
-    func getClosestLocation(annotations: [VehicleAnnotation], completion: @escaping (Result<VehicleAnnotation, GeneralError>) -> Void)
+    func getClosestLocation(annotations: [VehicleAnnotation], completion: @escaping LocationResult)
     func calculateClosestDisance() -> Double?
 }
 
 class DefaultLocationManagerUseCase: NSObject, LocationManagerUseCase {
     private var locationManager: CLLocationManager
 
-    private var completion: ((Result<VehicleAnnotation, GeneralError>) -> Void)?
+    private var completion: LocationResult?
     private var annotations: [VehicleAnnotation]?
     private var usersCurrentLocation: CLLocation?
     private var closestVehicle: VehicleAnnotation?
@@ -30,7 +32,7 @@ class DefaultLocationManagerUseCase: NSObject, LocationManagerUseCase {
         self.locationManager.delegate = self
     }
 
-    func getClosestLocation(annotations: [VehicleAnnotation], completion: @escaping (Result<VehicleAnnotation, GeneralError>) -> Void) {
+    func getClosestLocation(annotations: [VehicleAnnotation], completion: @escaping LocationResult) {
         
         self.locationManager.requestWhenInUseAuthorization()
         

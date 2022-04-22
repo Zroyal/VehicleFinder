@@ -8,8 +8,10 @@
 import Foundation
 import Combine
 
+typealias VehicleFetchResult = (Result<[VehicleModel], GeneralError>) -> Void
+
 protocol FetchScooterListUseCase {
-    func fetchScooters(completion: @escaping (Result<[VehicleModel], GeneralError>) -> Void)
+    func fetchScooters(completion: @escaping VehicleFetchResult)
 }
 
 class DefaultFetchScooterListUseCase: FetchScooterListUseCase {
@@ -20,7 +22,7 @@ class DefaultFetchScooterListUseCase: FetchScooterListUseCase {
         self.repo = repo
     }
     
-    func fetchScooters(completion: @escaping (Result<[VehicleModel], GeneralError>) -> Void) {
+    func fetchScooters(completion: @escaping VehicleFetchResult) {
             
             repo.getVehicles()
                 .receive(on: DispatchQueue.main)
