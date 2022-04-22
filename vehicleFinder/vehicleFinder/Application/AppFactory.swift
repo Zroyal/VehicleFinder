@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol AppFactory {
     func makeMapViewController() -> MapVC
@@ -15,8 +16,10 @@ protocol AppFactory {
 class DefaultAppFactory: AppFactory {
     func makeMapViewController() -> MapVC {
         let repo = DefaultScooterRepository()
-        let useCase = DefaultFetchScooterListUseCase(repo: repo)
-        let viewModel = DefaultMapViewModel(useCase: useCase)
+        let fetchUseCase = DefaultFetchScooterListUseCase(repo: repo)
+        let locationManager = CLLocationManager()
+        let locationUseCase = DefaultLocationManagerUseCase(manager: locationManager)
+        let viewModel = DefaultMapViewModel(fetchUseCase: fetchUseCase, locationUseCase: locationUseCase)
         let vc = MapVC(viewModel: viewModel)
         
         return vc

@@ -32,6 +32,7 @@
 		3DF223A528115F4F009418FF /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A428115F4F009418FF /* VehicleAnnotation.swift */; };
 		3DF223A728116976009418FF /* MapKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A628116976009418FF /* MapKitExtension.swift */; };
 		3DF223A928116B8C009418FF /* VehicleAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */; };
+		3DF223AD28131F25009418FF /* LocationManagerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223AC28131F25009418FF /* LocationManagerUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		3DF223A428115F4F009418FF /* VehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		3DF223A628116976009418FF /* MapKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtension.swift; sourceTree = "<group>"; };
 		3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAttributesModel.swift; sourceTree = "<group>"; };
+		3DF223AC28131F25009418FF /* LocationManagerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 				3DF223902810AD54009418FF /* VehicleModel.swift */,
 				3DF223932810B14E009418FF /* ResponseModel.swift */,
 				3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */,
+				3DF223A428115F4F009418FF /* VehicleAnnotation.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF223962810B2A5009418FF /* FetchScooterListUseCase.swift */,
+				3DF223AC28131F25009418FF /* LocationManagerUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -281,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				3DF2239A2810BF23009418FF /* MapViewModel.swift */,
-				3DF223A428115F4F009418FF /* VehicleAnnotation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				3DF223912810AD54009418FF /* VehicleModel.swift in Sources */,
 				3DF2239D2810C204009418FF /* AppFactory.swift in Sources */,
 				3DF223842810A827009418FF /* StringConstatns.swift in Sources */,
+				3DF223AD28131F25009418FF /* LocationManagerUseCase.swift in Sources */,
 				3DF223942810B14E009418FF /* ResponseModel.swift in Sources */,
 				3DF2239B2810BF23009418FF /* MapViewModel.swift in Sources */,
 				3DF223A528115F4F009418FF /* VehicleAnnotation.swift in Sources */,

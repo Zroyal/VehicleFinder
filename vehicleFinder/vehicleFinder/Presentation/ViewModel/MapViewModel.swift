@@ -11,6 +11,7 @@ import CoreLocation
 protocol MapViewModel {
     func showClosestVehicle()
     func fetchScooters()
+    func getAlertInfo(annotation: VehicleAnnotation?, distance: Double?) -> (String, String)
 }
 
 enum LoadingDataStatus {
@@ -30,22 +31,20 @@ class DefaultMapViewModel: NSObject, MapViewModel {
     @Published var closestVehicleFindingError: GeneralError?
 
     private var locationManager: CLLocationManager?
-    private var useCase: FetchScooterListUseCase?
+    private var fetchUseCase: FetchScooterListUseCase?
+    private var locationUseCase: LocationManagerUseCase?
+
     private var usersCurrentLocation: CLLocation?
     
-    init(useCase: FetchScooterListUseCase) {
-        self.useCase = useCase
-        
-        super.init()
-        
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
+    init(fetchUseCase: FetchScooterListUseCase, locationUseCase: LocationManagerUseCase) {
+        self.fetchUseCase = fetchUseCase
+        self.locationUseCase = locationUseCase
     }
     
     func fetchScooters() {
         status = .fetching
         
-        useCase?.fetchScooters(completion: { result in
+        fetchUseCase?.fetchScooters(completion: { result in
             switch result {
             case .success(let list):
                 self.loadData(models: list)
@@ -59,20 +58,65 @@ class DefaultMapViewModel: NSObject, MapViewModel {
     }
     
     func showClosestVehicle() {
-        locationManager?.requestWhenInUseAuthorization()
-        calculateDistance()
+        if self.annotations.count == 0 {
+            return
+        }
+        
+        locationUseCase?.getClosestLocation(
+            annotations: annotations,
+            completion: { result in
+                switch result {
+                case .success(let annotation):
+                    self.closestVehicle = annotation
+                    
+                case .failure(let error):
+                    self.closestVehicleFindingError = error
+                }
+            })
     }
     
     func calculateClosestDisance() -> Double? {
-        guard let userLocation = usersCurrentLocation else { return nil }
-        guard let closest = closestVehicle?.model else { return nil }
-        guard let lat = closest.attributes?.latitude else { return nil }
-        guard let lng = closest.attributes?.longitude else { return nil }
-
-        let itemLocation = CLLocation(latitude: lat, longitude: lng)
-        let itemDistance = userLocation.distance(from: itemLocation)
+        locationUseCase?.calculateClosestDisance()
+    }
+    
+    func getAlertInfo(annotation: VehicleAnnotation?, distance: Double?) -> (String, String) {
+        guard let annotation = annotation else {
+            return ("", "")
+        }
         
-        return itemDistance
+        let title = distance == nil ? StringConstatns.closestVehicleInformation : StringConstatns.selectedVehicleInformation
+        
+        var message = ""
+        message.append("\n")
+
+        message.append(StringConstatns.typeString)
+        message.append(": ")
+        message.append(annotation.model?.attributes?.vehicleType ?? "")
+        message.append("\n")
+
+        message.append(StringConstatns.hasHelmentBox)
+        message.append(": ")
+        message.append("\(annotation.model?.attributes?.hasHelmetBox ?? false)")
+        message.append("\n")
+
+        message.append(StringConstatns.batteryLevel)
+        message.append(": ")
+        message.append("\(annotation.model?.attributes?.batteryLevel ?? 0)")
+        message.append("\n")
+
+        message.append(StringConstatns.maxSpeed)
+        message.append(": ")
+        message.append("\(annotation.model?.attributes?.maxSpeed ?? 0)")
+        message.append("\n")
+
+        if distance != nil {
+            message.append(StringConstatns.distance)
+            message.append(": ")
+            message.append("\(distance ?? 0)")
+            message.append("\n")
+        }
+        
+        return (title, message)
     }
     
     private func loadData(models: [VehicleModel]) {
@@ -85,55 +129,4 @@ class DefaultMapViewModel: NSObject, MapViewModel {
         self.annotations = annotations
     }
     
-}
-
-
-extension DefaultMapViewModel: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
-            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-                if CLLocationManager.isRangingAvailable() {
-                    manager.startUpdatingLocation()
-                }
-            }
-        } else if status == .denied {
-            self.closestVehicleFindingError = .locationAccess(description: "Access to your current location is denied. If you would like to see the closest vehicle, please access the app through the device settings.")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.usersCurrentLocation = locations[0] as CLLocation
-        calculateDistance()
-    }
-    
-    func calculateDistance() {
-        guard let userLocation = usersCurrentLocation else { return }
-        
-        
-        DispatchQueue.global(qos: .background).async {
-            var distance: Double?
-            var closestAnnotation: VehicleAnnotation?
-
-            for item in self.annotations {
-                guard let lat = item.model?.attributes?.latitude else { continue }
-                guard let lng = item.model?.attributes?.longitude else { continue }
-                
-                let itemLocation = CLLocation(latitude: lat, longitude: lng)
-                let itemDistance = userLocation.distance(from: itemLocation)
-                if distance == nil {
-                    distance = itemDistance
-                    closestAnnotation = item
-                    
-                } else if itemDistance < distance ?? 0 {
-                    distance = itemDistance
-                    closestAnnotation = item
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.closestVehicle = closestAnnotation
-            }
-        }
-
-    }
 }

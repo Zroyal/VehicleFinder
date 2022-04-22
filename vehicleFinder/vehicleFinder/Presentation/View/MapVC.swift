@@ -18,7 +18,7 @@ class MapVC: UIViewController {
     lazy private var closestButton = UIButton(frame: .zero)
     lazy private var loadingView = LoadingView(frame: .zero)
     private var isWaitingForClosest = false
-
+    
     let initialLocation = CLLocation(latitude: 52.556577, longitude: 13.393951)
     
     init(viewModel: DefaultMapViewModel) {
@@ -112,7 +112,10 @@ class MapVC: UIViewController {
             .sink(receiveValue: { [weak self] status in
                 
                 if status == .fail {
-                    self?.showError(error: self?.viewModel.error)
+                    self?.showError(error: self?.viewModel.error, retryable: true, completion: {
+                        self?.viewModel.fetchScooters()
+                    })
+                    
                     self?.loadingView.hideLoading()
                     
                 } else if status == .fetching {
@@ -136,11 +139,13 @@ class MapVC: UIViewController {
             .sink(receiveValue: { [weak self] _ in
                 if self?.isWaitingForClosest ?? false {
                     self?.loadingView.hideLoading()
-                    self?.showClosestInfo(annotation: self?.viewModel.closestVehicle, distance: self?.viewModel.calculateClosestDisance())
+                    self?.showAnnotationInfo(
+                        annotation: self?.viewModel.closestVehicle,
+                        distance: self?.viewModel.calculateClosestDisance())
                 }
             })
             .store(in: &bindings)
-
+        
         viewModel.$closestVehicleFindingError
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
@@ -150,7 +155,7 @@ class MapVC: UIViewController {
                 }
             })
             .store(in: &bindings)
-
+        
     }
     
     
@@ -161,10 +166,10 @@ class MapVC: UIViewController {
         }
         
         if viewModel.closestVehicle != nil {
-            showClosestInfo(
+            showAnnotationInfo(
                 annotation: viewModel.closestVehicle,
                 distance: viewModel.calculateClosestDisance())
-
+            
         } else {
             isWaitingForClosest = true
             loadingView.setLoadingMessage("Finding closest vehicle")
@@ -182,52 +187,76 @@ class MapVC: UIViewController {
         loadingView.hideLoading()
     }
     
-    private func showError(error: GeneralError?) {
-        let alertController = UIAlertController(
-            title: StringConstatns.generalErrorTitle,
-            message: error?.localizedDescription ?? StringConstatns.generalError,
-            preferredStyle: .alert)
+    private func showError(
+        error: GeneralError?,
+        retryable: Bool = false,
+        completion: (() -> Void)? = nil) {
         
-        let alertAction = UIAlertAction(
-            title: StringConstatns.okay,
-            style: .default) {  _ in }
-        
-        alertController.addAction(alertAction)
-        
-        present(alertController, animated: true, completion: nil)
-    }
+            let title = StringConstatns.generalErrorTitle
+            let massage = error?.localizedDescription ?? StringConstatns.generalError
+            let buttonTitle = retryable ? StringConstatns.retry : StringConstatns.okay
+            
+            showError(
+                title: title,
+                message: massage,
+                buttonTitle: buttonTitle,
+                completion: completion)
+        }
+    
+    private func showError(
+        title: String?,
+        message: String,
+        buttonTitle: String,
+        completion: (() -> Void)? ) {
+            
+            let alertController = UIAlertController(
+                title: title,
+                message: message,
+                preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(
+                title: buttonTitle,
+                style: .default) {  _ in
+                    completion?()
+                }
+            
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
     
     
-    private func showVehicleInfo(annotation: VehicleAnnotation) {
-        let message = "Type: \(annotation.model?.attributes?.vehicleType ?? "")\nHas Helment Box: \(annotation.model?.attributes?.hasHelmetBox ?? false)\nBattery Level: \(annotation.model?.attributes?.batteryLevel ?? 0)\nMax Speed: \(annotation.model?.attributes?.maxSpeed ?? 0)"
+    private func showAnnotationInfo(annotation: VehicleAnnotation?, distance: Double? = nil) {
+        guard let annotation = annotation else {
+            return
+        }
+
+        let info = viewModel.getAlertInfo(annotation: annotation, distance: distance)
         
-        let alert = UIAlertController(title: "\(StringConstatns.SelectedVehicleInformation)\n", message: message, preferredStyle: .actionSheet)
+        if info.0.count == 0 {
+            return
+        }
+                    
+        let alert = UIAlertController(
+            title: info.0,
+            message: info.1,
+            preferredStyle: .actionSheet)
         
-        let cancel = UIAlertAction(title: "OK", style: .cancel)
+        let cancel = UIAlertAction(title: StringConstatns.okay, style: .cancel)
         alert.addAction(cancel)
         
-        let showInMap = UIAlertAction(title: "Show in Map", style: .default) { action in
+        
+        let openInMaps = UIAlertAction(title: StringConstatns.openInMaps, style: .default) { action in
             let launchOptions = [
                 MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving
             ]
             annotation.mapItem?.openInMaps(launchOptions: launchOptions)
         }
-        alert.addAction(showInMap)
-        
+        alert.addAction(openInMaps)
+
         present(alert, animated: true)
     }
     
-    private func showClosestInfo(annotation: VehicleAnnotation?, distance: Double?) {
-        let message = "Type: \(annotation?.model?.attributes?.vehicleType ?? "")\nHas Helment Box: \(annotation?.model?.attributes?.hasHelmetBox ?? false)\nBattery Level: \(annotation?.model?.attributes?.batteryLevel ?? 0)\nMax Speed: \(annotation?.model?.attributes?.maxSpeed ?? 0)\nDistance: \(distance ?? 0)"
-        
-        let alert = UIAlertController(title: "Closest Vehicle Information\n", message: message, preferredStyle: .actionSheet)
-        
-        let cancel = UIAlertAction(title: "OK", style: .cancel)
-        alert.addAction(cancel)
-                
-        present(alert, animated: true)
-    }
-
 }
 
 
@@ -237,7 +266,7 @@ extension MapVC: MKMapViewDelegate {
             return
         }
         
-        showVehicleInfo(annotation: vehicleAnnotation)
+        showAnnotationInfo(annotation: vehicleAnnotation)
     }
     
     func mapView(
