@@ -12,7 +12,7 @@ import Combine
 protocol Networkable: AnyObject {
     func get<T>(
         type: T.Type,
-        path: String) -> AnyPublisher<T, APIError> where T: Decodable
+        path: String) -> AnyPublisher<T, GeneralError> where T: Decodable
 }
 
 class Networker: Networkable {
@@ -25,16 +25,16 @@ class Networker: Networkable {
     
     func get<T>(
         type: T.Type,
-        path: String) -> AnyPublisher<T, APIError> where T: Decodable {
+        path: String) -> AnyPublisher<T, GeneralError> where T: Decodable {
             
             return fetch(with: path)
         }
     
     
-    private func fetch<T>(with path: String) -> AnyPublisher<T, APIError> where T: Decodable {
+    private func fetch<T>(with path: String) -> AnyPublisher<T, GeneralError> where T: Decodable {
         
         guard let url = URL(string: path) else {
-            let error = APIError.network(
+            let error = GeneralError.network(
                 description: StringConstatns.createUrlError)
             return Fail(error: error).eraseToAnyPublisher()
         }
@@ -66,12 +66,12 @@ class Networker: Networkable {
             .store(in: &cancellables)
         
         
-        let pub: AnyPublisher<T, APIError> = cancellable
+        let pub: AnyPublisher<T, GeneralError> = cancellable
             .mapError { error in
-                return APIError.network(description: error.localizedDescription)
+                return GeneralError.network(description: error.localizedDescription)
             }
         
-            .flatMap(maxPublishers: .max(1)) { dataResponse -> AnyPublisher<T, APIError> in
+            .flatMap(maxPublishers: .max(1)) { dataResponse -> AnyPublisher<T, GeneralError> in
                 return decode(dataResponse.data)
             }
         

@@ -14,7 +14,7 @@
 		3DF2235E2810A267009418FF /* vehicleFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2235D2810A267009418FF /* vehicleFinderTests.swift */; };
 		3DF223682810A267009418FF /* vehicleFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223672810A267009418FF /* vehicleFinderUITests.swift */; };
 		3DF2236A2810A267009418FF /* vehicleFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223692810A267009418FF /* vehicleFinderUITestsLaunchTests.swift */; };
-		3DF2237E2810A76C009418FF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2237D2810A76C009418FF /* APIError.swift */; };
+		3DF2237E2810A76C009418FF /* GeneralError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2237D2810A76C009418FF /* GeneralError.swift */; };
 		3DF223802810A789009418FF /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2237F2810A789009418FF /* Networker.swift */; };
 		3DF223822810A7DB009418FF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223812810A7DB009418FF /* Utils.swift */; };
 		3DF223842810A827009418FF /* StringConstatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223832810A827009418FF /* StringConstatns.swift */; };
@@ -29,6 +29,9 @@
 		3DF2239D2810C204009418FF /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2239C2810C204009418FF /* AppFactory.swift */; };
 		3DF223A02810C463009418FF /* ApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2239F2810C463009418FF /* ApplicationExtension.swift */; };
 		3DF223A22810C6B7009418FF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A12810C6B7009418FF /* LoadingView.swift */; };
+		3DF223A528115F4F009418FF /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A428115F4F009418FF /* VehicleAnnotation.swift */; };
+		3DF223A728116976009418FF /* MapKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A628116976009418FF /* MapKitExtension.swift */; };
+		3DF223A928116B8C009418FF /* VehicleAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +63,7 @@
 		3DF223632810A267009418FF /* vehicleFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vehicleFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF223672810A267009418FF /* vehicleFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleFinderUITests.swift; sourceTree = "<group>"; };
 		3DF223692810A267009418FF /* vehicleFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3DF2237D2810A76C009418FF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		3DF2237D2810A76C009418FF /* GeneralError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralError.swift; sourceTree = "<group>"; };
 		3DF2237F2810A789009418FF /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		3DF223812810A7DB009418FF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3DF223832810A827009418FF /* StringConstatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstatns.swift; sourceTree = "<group>"; };
@@ -75,6 +78,9 @@
 		3DF2239C2810C204009418FF /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		3DF2239F2810C463009418FF /* ApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationExtension.swift; sourceTree = "<group>"; };
 		3DF223A12810C6B7009418FF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		3DF223A428115F4F009418FF /* VehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
+		3DF223A628116976009418FF /* MapKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtension.swift; sourceTree = "<group>"; };
+		3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAttributesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +199,7 @@
 		3DF2237A2810A6A2009418FF /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				3DF2237D2810A76C009418FF /* APIError.swift */,
+				3DF2237D2810A76C009418FF /* GeneralError.swift */,
 				3DF2237F2810A789009418FF /* Networker.swift */,
 				3DF223812810A7DB009418FF /* Utils.swift */,
 			);
@@ -249,6 +255,7 @@
 			children = (
 				3DF223902810AD54009418FF /* VehicleModel.swift */,
 				3DF223932810B14E009418FF /* ResponseModel.swift */,
+				3DF223A828116B8C009418FF /* VehicleAttributesModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF2239A2810BF23009418FF /* MapViewModel.swift */,
+				3DF223A428115F4F009418FF /* VehicleAnnotation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF2239F2810C463009418FF /* ApplicationExtension.swift */,
+				3DF223A628116976009418FF /* MapKitExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,18 +428,21 @@
 				3DF223822810A7DB009418FF /* Utils.swift in Sources */,
 				3DF223882810AA3C009418FF /* APIEndpoints.swift in Sources */,
 				3DF2234B2810A265009418FF /* MapVC.swift in Sources */,
+				3DF223A928116B8C009418FF /* VehicleAttributesModel.swift in Sources */,
 				3DF223472810A265009418FF /* AppDelegate.swift in Sources */,
+				3DF223A728116976009418FF /* MapKitExtension.swift in Sources */,
 				3DF223A22810C6B7009418FF /* LoadingView.swift in Sources */,
 				3DF2238A2810ABBB009418FF /* APIConstants.swift in Sources */,
 				3DF2238C2810ACC6009418FF /* DefaultScooterRepository.swift in Sources */,
 				3DF223A02810C463009418FF /* ApplicationExtension.swift in Sources */,
-				3DF2237E2810A76C009418FF /* APIError.swift in Sources */,
+				3DF2237E2810A76C009418FF /* GeneralError.swift in Sources */,
 				3DF2238F2810AD0F009418FF /* ScooterRepository.swift in Sources */,
 				3DF223912810AD54009418FF /* VehicleModel.swift in Sources */,
 				3DF2239D2810C204009418FF /* AppFactory.swift in Sources */,
 				3DF223842810A827009418FF /* StringConstatns.swift in Sources */,
 				3DF223942810B14E009418FF /* ResponseModel.swift in Sources */,
 				3DF2239B2810BF23009418FF /* MapViewModel.swift in Sources */,
+				3DF223A528115F4F009418FF /* VehicleAnnotation.swift in Sources */,
 				3DF223802810A789009418FF /* Networker.swift in Sources */,
 				3DF223972810B2A5009418FF /* FetchScooterListUseCase.swift in Sources */,
 			);
@@ -604,6 +616,7 @@
 				DEVELOPMENT_TEAM = P3JL46M594;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vehicleFinder/Resources/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To find closest vehicle to you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -632,6 +645,7 @@
 				DEVELOPMENT_TEAM = P3JL46M594;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vehicleFinder/Resources/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To find closest vehicle to you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

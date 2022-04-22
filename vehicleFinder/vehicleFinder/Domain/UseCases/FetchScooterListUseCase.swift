@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol FetchScooterListUseCase {
-    func fetchScooters(completion: @escaping (Result<[VehicleModel], APIError>) -> Void)
+    func fetchScooters(completion: @escaping (Result<[VehicleModel], GeneralError>) -> Void)
 }
 
 class DefaultFetchScooterListUseCase: FetchScooterListUseCase {
@@ -20,7 +20,7 @@ class DefaultFetchScooterListUseCase: FetchScooterListUseCase {
         self.repo = repo
     }
     
-    func fetchScooters(completion: @escaping (Result<[VehicleModel], APIError>) -> Void) {
+    func fetchScooters(completion: @escaping (Result<[VehicleModel], GeneralError>) -> Void) {
             
             repo.getVehicles()
                 .receive(on: DispatchQueue.main)

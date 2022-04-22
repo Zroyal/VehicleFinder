@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol ScooterRepository {
-    func getVehicles() -> AnyPublisher<ResponseModel, APIError>
+    func getVehicles() -> AnyPublisher<ResponseModel, GeneralError>
 }

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, APIError> {
+func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, GeneralError> {
   let decoder = JSONDecoder()
   decoder.dateDecodingStrategy = .secondsSince1970
 

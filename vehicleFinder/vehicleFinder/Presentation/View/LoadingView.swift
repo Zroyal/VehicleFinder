@@ -66,4 +66,8 @@ class LoadingView: UIView {
         isHidden = true
         activityIndicator?.stopAnimating()
     }
+    
+    func setLoadingMessage(_ message: String) {
+        self.label?.text = message
+    }
 }

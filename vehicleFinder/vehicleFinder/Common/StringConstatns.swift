@@ -8,11 +8,14 @@
 import Foundation
 
 struct StringConstatns {
-    static let generalErrorTitle = "Sorry..."
+    static let generalErrorTitle = "Error"
     static let generalError = "Failed to load data"
     static let okay = "OK"
     static let createUrlError = "Couldn't create URL"
     static let retry = "Retry"
     static let showClosestVehicle = "Show Closest Vehicle"
-    static let fetchingData = "Fetching Data..."
+    static let fetchingData = "Fetching Data"
+    static let addingDataToMap = "Preparing Map"
+    static let SelectedVehicleInformation = "Selected Vehicle Information"
+
 }

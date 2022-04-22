@@ -17,9 +17,9 @@ class DefaultScooterRepository: ScooterRepository {
         self.networker = networker
     }
 
-    func getVehicles() -> AnyPublisher<ResponseModel, APIError> {
+    func getVehicles() -> AnyPublisher<ResponseModel, GeneralError> {
         let path = APIEndpoints().getScooterPath()
-        let publisher: AnyPublisher<ResponseModel, APIError> = networker.get(type: ResponseModel.self, path: path)
+        let publisher: AnyPublisher<ResponseModel, GeneralError> = networker.get(type: ResponseModel.self, path: path)
         
         publisher.sink { completion in
             
