@@ -64,6 +64,11 @@ class MapVC: UIViewController {
         closestButton.setTitle(StringConstatns.showClosestVehicle, for: .normal)
         closestButton.setTitleColor(.white, for: .normal)
         closestButton.addTarget(self, action: #selector(showClosestVehicleInformation), for: .touchUpInside)
+        closestButton.titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: 10,
+            bottom: UIApplication.getBottomSafeArea()/2,
+            right: 10)
     }
     
     private func setUpConstraints() {
@@ -260,6 +265,14 @@ class MapVC: UIViewController {
         alert.addAction(openInMaps)
 
         present(alert, animated: true)
+        
+        if distance != nil {
+            let location = CLLocation(
+                latitude: annotation.coordinate.latitude,
+                longitude: annotation.coordinate.longitude)
+            self.mapView.centerToLocation(location, regionRadius: 600)
+
+        }
     }
     
 }
@@ -267,11 +280,14 @@ class MapVC: UIViewController {
 
 extension MapVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let vehicleAnnotation = view.annotation as? VehicleAnnotation else {
-            return
+        if let vehicleAnnotation = view.annotation as? VehicleAnnotation  {
+            showAnnotationInfo(annotation: vehicleAnnotation)
+        } else {
+            let location = CLLocation(
+                latitude: view.annotation?.coordinate.latitude ?? 0,
+                longitude: view.annotation?.coordinate.longitude ?? 0)
+            self.mapView.centerToLocation(location, regionRadius: 600)
         }
-        
-        showAnnotationInfo(annotation: vehicleAnnotation)
     }
     
     func mapView(
