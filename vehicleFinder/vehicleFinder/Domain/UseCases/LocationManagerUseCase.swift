@@ -33,9 +33,7 @@ class DefaultLocationManagerUseCase: NSObject, LocationManagerUseCase {
     }
 
     func getClosestLocation(annotations: [VehicleAnnotation], completion: @escaping LocationResult) {
-        
-        self.locationManager.requestWhenInUseAuthorization()
-        
+                
         if let closest = self.closestVehicle {
             completion(.success(closest))
             
@@ -43,6 +41,9 @@ class DefaultLocationManagerUseCase: NSObject, LocationManagerUseCase {
             self.annotations = annotations
             self.completion = completion
         }
+        
+        self.locationManager.requestWhenInUseAuthorization()
+
     }
     
     func calculateClosestDisance() -> Double? {

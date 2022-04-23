@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import MapKit
 @testable import vehicleFinder
 
 struct TestMockData {
@@ -42,6 +43,34 @@ struct TestMockData {
 }
 """
 
+    static let vehicleModelRaw =
+"""
+        {
+            "type": "vehicle",
+            "id": "a6eec990",
+            "attributes": {
+                "batteryLevel": 51,
+                "lat": 52.562272,
+                "lng": 13.335213,
+                "maxSpeed": 20,
+                "vehicleType": "escooter",
+                "hasHelmetBox": false
+            }
+        }
+"""
+    
+    static let vehicleAttributeRaw =
+"""
+        {
+            "batteryLevel": 51,
+            "lat": 52.562272,
+            "lng": 13.335213,
+            "maxSpeed": 20,
+            "vehicleType": "escooter",
+            "hasHelmetBox": false
+        }
+"""
+    
     static let vehicleModel1 = VehicleModel(
         type: "vehicle",
         vehicleId: "a6eec990",
@@ -66,6 +95,10 @@ struct TestMockData {
     
     
     static let vehicles = [TestMockData.vehicleModel1, TestMockData.vehicleModel2]
+
+    static let vehicleAnnotation1 = VehicleAnnotation(model: TestMockData.vehicleModel1)
+    static let vehicleAnnotation2 = VehicleAnnotation(model: TestMockData.vehicleModel2)
+    static let annotations = [vehicleAnnotation1, vehicleAnnotation2]
 
 }
 
@@ -110,5 +143,26 @@ class MockNetworker: Networkable {
         
         return pub
 
+    }
+}
+
+
+class MockLocationManager: CLLocationManager {
+    var needSuccess: Bool = true
+    init(needSuccess: Bool = true) {
+        self.needSuccess = needSuccess
+    }
+    
+    override func requestWhenInUseAuthorization() {
+        
+        if needSuccess {
+            let location = CLLocation(latitude: 52.556577, longitude: 13.393951)
+            self.delegate?.locationManager?(self, didUpdateLocations: [location])
+        } else {
+            self.delegate?.locationManager?(self, didChangeAuthorization: .denied)
+        }
+    }
+
+    override func startUpdatingLocation() {
     }
 }
