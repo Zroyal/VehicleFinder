@@ -40,10 +40,13 @@ class DefaultLocationManagerUseCase: NSObject, LocationManagerUseCase {
         } else {
             self.annotations = annotations
             self.completion = completion
+            
+            if self.usersCurrentLocation != nil {
+                calculateDistance()
+            }
         }
         
         self.locationManager.requestWhenInUseAuthorization()
-
     }
     
     func calculateClosestDisance() -> Double? {
@@ -84,12 +87,21 @@ extension DefaultLocationManagerUseCase: CLLocationManagerDelegate {
         calculateDistance()
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let error: GeneralError = .locationAccess(description: error.localizedDescription)
+        if let completion = completion {
+            completion(.failure(error))
+        }
+        
+        self.completion = nil
+    }
+    
     private func calculateDistance() {
         guard let userLocation = usersCurrentLocation else { return }
         guard let annotations = annotations else { return }
 
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             var distance: Double?
             var closestAnnotation: VehicleAnnotation?
 

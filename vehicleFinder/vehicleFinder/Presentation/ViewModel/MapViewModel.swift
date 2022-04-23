@@ -84,7 +84,7 @@ class DefaultMapViewModel: NSObject, MapViewModel {
             return ("", "")
         }
         
-        let title = distance == nil ? StringConstatns.closestVehicleInformation : StringConstatns.selectedVehicleInformation
+        let title = distance == nil ? StringConstatns.selectedVehicleInformation : StringConstatns.closestVehicleInformation
         
         var message = ""
         message.append("\n")
@@ -112,7 +112,7 @@ class DefaultMapViewModel: NSObject, MapViewModel {
         if distance != nil {
             message.append(StringConstatns.distance)
             message.append(": ")
-            message.append("\(distance ?? 0)")
+            message.append("\((distance ?? 0)/1000) Km")
             message.append("\n")
         }
         
