@@ -282,12 +282,7 @@ extension MapVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let vehicleAnnotation = view.annotation as? VehicleAnnotation  {
             showAnnotationInfo(annotation: vehicleAnnotation)
-        } else {
-            let location = CLLocation(
-                latitude: view.annotation?.coordinate.latitude ?? 0,
-                longitude: view.annotation?.coordinate.longitude ?? 0)
-            self.mapView.centerToLocation(location, regionRadius: 600)
-        }
+        } 
     }
     
     func mapView(
