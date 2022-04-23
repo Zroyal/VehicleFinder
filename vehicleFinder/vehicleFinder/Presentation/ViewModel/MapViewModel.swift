@@ -110,7 +110,7 @@ class DefaultMapViewModel: NSObject, MapViewModel {
         message.append("\n")
 
         if distance != nil {
-            let distanceString = String(format: "%.3f Km", (distance ?? 0)/1000)
+            let distanceString = String(format: "%.3f \(StringConstatns.km)", (distance ?? 0)/1000)
             message.append(StringConstatns.distance)
             message.append(": ")
             message.append(distanceString)

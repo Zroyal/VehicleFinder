@@ -26,4 +26,5 @@ struct StringConstatns {
     static let closestVehicleInformation = "Closest Vehicle Information"
     static let openInMaps = "Open in Maps"
     static let FindingClosestVehicle = "Finding closest vehicle"
+    static let km = "Km"
 }
