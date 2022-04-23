@@ -37,6 +37,7 @@
 		3DF223B42813483D009418FF /* UseCasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223B32813483D009418FF /* UseCasesTests.swift */; };
 		3DF223B628134B5C009418FF /* EntitesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223B528134B5C009418FF /* EntitesTests.swift */; };
 		3DF223B82813FD39009418FF /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223B72813FD39009418FF /* ViewModelTests.swift */; };
+		3DF223BA28142CB4009418FF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF223B928142CB4009418FF /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		3DF223B32813483D009418FF /* UseCasesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesTests.swift; sourceTree = "<group>"; };
 		3DF223B528134B5C009418FF /* EntitesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitesTests.swift; sourceTree = "<group>"; };
 		3DF223B72813FD39009418FF /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		3DF223B928142CB4009418FF /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				3DF2239E2810C43E009418FF /* Extensions */,
 				3DF223832810A827009418FF /* StringConstatns.swift */,
 				3DF223892810ABBB009418FF /* APIConstants.swift */,
+				3DF223B928142CB4009418FF /* Logger.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF223822810A7DB009418FF /* Utils.swift in Sources */,
+				3DF223BA28142CB4009418FF /* Logger.swift in Sources */,
 				3DF223882810AA3C009418FF /* APIEndpoints.swift in Sources */,
 				3DF2234B2810A265009418FF /* MapVC.swift in Sources */,
 				3DF223A928116B8C009418FF /* VehicleAttributesModel.swift in Sources */,

@@ -19,7 +19,6 @@ class MapVC: UIViewController {
     lazy private var loadingView = LoadingView(frame: .zero)
     private var isWaitingForClosest = false
     
-    let initialLocation = CLLocation(latitude: 52.556577, longitude: 13.393951)
     
     init(viewModel: DefaultMapViewModel) {
         self.viewModel = viewModel
@@ -35,9 +34,13 @@ class MapVC: UIViewController {
         
         configView()
         setupBindings()
-        
-        mapView.centerToLocation(initialLocation)
         viewModel.fetchScooters()
+        
+#if DEBUG
+        let initialLocation = CLLocation(latitude: 52.556577, longitude: 13.393951)
+        mapView.centerToLocation(initialLocation)
+#endif
+
     }
     
     private func configView() {
