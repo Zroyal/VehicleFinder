@@ -202,7 +202,7 @@ class ViewModelTests: XCTestCase {
         let message = sut.getAlertInfo(annotation: TestMockData.vehicleAnnotation1, distance: 10)
 
         XCTAssertEqual(message.0, StringConstatns.closestVehicleInformation)
-        XCTAssertEqual(message.1, "\nType: escooter\nHas Helment Box: false\nBattery Level: 51\nMax Speed: 20\nDistance: 0.01 Km\n")
+        XCTAssertEqual(message.1, "\nType: escooter\nHas Helment Box: false\nBattery Level: 51\nMax Speed: 20\nDistance: 0.010 Km\n")
 
     }
 }
