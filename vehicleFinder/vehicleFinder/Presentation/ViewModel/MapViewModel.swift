@@ -12,6 +12,7 @@ protocol MapViewModel {
     func showClosestVehicle()
     func fetchScooters()
     func getAlertInfo(annotation: VehicleAnnotation?, distance: Double?) -> (String, String)
+    func calculateClosestDisance() -> Double?
 }
 
 enum LoadingDataStatus {
@@ -30,7 +31,6 @@ class DefaultMapViewModel: NSObject, MapViewModel {
     @Published var closestVehicle: VehicleAnnotation?
     @Published var closestVehicleFindingError: GeneralError?
 
-    private var locationManager: CLLocationManager?
     private var fetchUseCase: FetchScooterListUseCase?
     private var locationUseCase: LocationManagerUseCase?
 
