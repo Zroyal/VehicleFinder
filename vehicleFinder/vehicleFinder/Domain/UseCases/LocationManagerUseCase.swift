@@ -47,6 +47,7 @@ class DefaultLocationManagerUseCase: NSObject, LocationManagerUseCase {
         }
         
         self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
     
     func calculateClosestDisance() -> Double? {
